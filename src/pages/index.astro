@@ -8,56 +8,274 @@ const siteName = "Code of Cosmos";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{siteName} - Premium Vedic Astrology Consultations</title>
-    <meta name="description" content="Understand the patterns shaping your life. Premium, confidential Vedic astrology consultations.">
+    <meta name="description" content="Understand the patterns shaping your life. Premium, confidential Vedic astrology consultations for career, relationships, and life direction.">
     <style>
+      /* --- GLOBAL STYLES --- */
+      :root {
+        --midnight-blue: #0B0F19;
+        --cosmic-black: #050505;
+        --ivory: #FFFFF0;
+        --antique-gold: #C5A059;
+        --deep-violet: #2E1A47;
+        --text-muted: #A0AEC0;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
       body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #0B0F19 0%, #1a1f3a 100%);
-        color: #FFFFF0;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .container {
-        text-align: center;
-        padding: 2rem;
-        max-width: 800px;
-      }
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        color: #C5A059;
-      }
-      p {
-        font-size: 1.25rem;
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        background-color: var(--midnight-blue);
+        color: var(--ivory);
         line-height: 1.6;
-        margin-bottom: 2rem;
-        color: #FFFFF0;
       }
-      .cta-button {
+      .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+      h1, h2, h3 { color: var(--antique-gold); font-weight: 600; line-height: 1.2; }
+      a { text-decoration: none; color: inherit; }
+      
+      /* --- BUTTONS --- */
+      .btn {
         display: inline-block;
-        padding: 1rem 2rem;
-        background: #C5A059;
-        color: #0B0F19;
-        text-decoration: none;
-        border-radius: 8px;
-        font-weight: bold;
-        transition: transform 0.2s;
+        padding: 0.9rem 2rem;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
       }
-      .cta-button:hover {
-        transform: translateY(-2px);
+      .btn-primary {
+        background-color: var(--antique-gold);
+        color: var(--cosmic-black);
+      }
+      .btn-primary:hover { background-color: #d4af66; transform: translateY(-2px); }
+      .btn-outline {
+        background-color: transparent;
+        border: 1px solid var(--antique-gold);
+        color: var(--antique-gold);
+      }
+      .btn-outline:hover { background-color: rgba(197, 160, 89, 0.1); }
+
+      /* --- HERO SECTION --- */
+      .hero {
+        padding: 5rem 0 4rem;
+        text-align: center;
+        background: radial-gradient(circle at top, var(--deep-violet) 0%, var(--midnight-blue) 60%);
+      }
+      .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+      .hero p { font-size: 1.15rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem; }
+      .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+      /* --- TRUST BAR --- */
+      .trust-bar {
+        background-color: var(--cosmic-black);
+        padding: 1.5rem 0;
+        border-top: 1px solid rgba(197, 160, 89, 0.2);
+        border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+      }
+      .trust-items {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+      .trust-items span { display: flex; align-items: center; gap: 0.5rem; }
+
+      /* --- SERVICES SECTION --- */
+      .services { padding: 5rem 0; }
+      .section-title { text-align: center; font-size: 2rem; margin-bottom: 3rem; }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+      .service-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(197, 160, 89, 0.15);
+        border-radius: 8px;
+        padding: 2rem;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+      .service-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--antique-gold);
+      }
+      .service-card h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+      .service-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+      /* --- HOW IT WORKS --- */
+      .how-it-works { padding: 5rem 0; background-color: var(--cosmic-black); }
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        text-align: center;
+      }
+      .step-number {
+        width: 50px; height: 50px;
+        background-color: var(--antique-gold);
+        color: var(--cosmic-black);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.5rem; font-weight: bold;
+        margin: 0 auto 1.5rem;
+      }
+      .step h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--ivory); }
+      .step p { color: var(--text-muted); font-size: 0.95rem; }
+
+      /* --- TESTIMONIALS --- */
+      .testimonials { padding: 5rem 0; }
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+      .testimonial-card {
+        background: rgba(46, 26, 71, 0.3);
+        padding: 2rem;
+        border-radius: 8px;
+        border-left: 3px solid var(--antique-gold);
+      }
+      .testimonial-card p { font-style: italic; color: var(--ivory); margin-bottom: 1rem; }
+      .testimonial-author { color: var(--antique-gold); font-weight: 600; font-size: 0.9rem; }
+
+      /* --- FINAL CTA --- */
+      .final-cta {
+        padding: 5rem 0;
+        text-align: center;
+        background: radial-gradient(circle at bottom, var(--deep-violet) 0%, var(--midnight-blue) 60%);
+      }
+      .final-cta h2 { font-size: 2rem; margin-bottom: 1rem; }
+      .final-cta p { color: var(--text-muted); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+      /* --- FOOTER --- */
+      footer {
+        background-color: var(--cosmic-black);
+        padding: 3rem 0;
+        border-top: 1px solid rgba(197, 160, 89, 0.1);
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+      footer a { color: var(--antique-gold); }
+      footer a:hover { text-decoration: underline; }
+
+      /* --- MOBILE TWEAKS --- */
+      @media (max-width: 768px) {
+        .hero h1 { font-size: 2rem; }
+        .trust-items { flex-direction: column; gap: 1rem; align-items: center; }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1>Code of Cosmos</h1>
-      <p>Understand the patterns shaping your life.<br>
-      Premium Vedic astrology consultations for the modern professional.</p>
-      <a href="#" class="cta-button">Book a Consultation</a>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <h1>Understand the patterns shaping your life.</h1>
+        <p>Premium, confidential Vedic astrology consultations for career, relationships, and life direction. Backed by astronomical precision, delivered with modern clarity.</p>
+        <div class="hero-buttons">
+          <a href="#services" class="btn btn-primary">Book a Consultation</a>
+          <a href="#how-it-works" class="btn btn-outline">Explore Your Cosmos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <div class="trust-bar">
+      <div class="container">
+        <div class="trust-items">
+          <span>🔒 100% Confidential</span>
+          <span>⭐ Vetted Expert Astrologers</span>
+          <span>📅 500+ Sessions Completed</span>
+          <span>💳 Secure Indian Payments</span>
+        </div>
+      </div>
     </div>
+
+    <!-- SERVICES -->
+    <section id="services" class="services">
+      <div class="container">
+        <h2 class="section-title">Areas of Guidance</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>Career & Finance</h3>
+            <p>Navigate professional transitions, business ventures, and financial growth with clarity on your optimal timing and strengths.</p>
+            <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem;">View Details</a>
+          </div>
+          <div class="service-card">
+            <h3>Love & Relationships</h3>
+            <p>Understand compatibility, relationship dynamics, and the cosmic timing of marriage or partnerships.</p>
+            <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem;">View Details</a>
+          </div>
+          <div class="service-card">
+            <h3>Life Direction</h3>
+            <p>A comprehensive 45-minute session analyzing your core Dasha periods and upcoming transits for holistic life planning.</p>
+            <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem;">View Details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works" class="how-it-works">
+      <div class="container">
+        <h2 class="section-title">How Consultation Works</h2>
+        <div class="steps-grid">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Share Birth Details</h3>
+            <p>Provide your date, time, and place of birth securely during the booking process.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Book Your Session</h3>
+            <p>Choose your preferred astrologer, select a convenient time slot, and pay securely via UPI/Card.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Receive Clarity</h3>
+            <p>Join your video call and receive a personalized PDF summary report within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+      <div class="container">
+        <h2 class="section-title">Client Experiences</h2>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <p>"I was skeptical, but the session wasn't about scary predictions. It was a highly structured, psychological breakdown of my career stagnation. It gave me the confidence to pivot."</p>
+            <div class="testimonial-author">— R.K., Software Engineer, Bangalore</div>
+          </div>
+          <div class="testimonial-card">
+            <p>"The most professional astrology experience I've had. The booking was seamless, the astrologer was punctual, and the follow-up report was incredibly detailed."</p>
+            <div class="testimonial-author">— A.S., Entrepreneur, Mumbai</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+      <div class="container">
+        <h2>Your cosmic blueprint is waiting.</h2>
+        <p>Stop guessing. Start understanding. Book your personalized consultation today and gain the clarity you deserve.</p>
+        <a href="#services" class="btn btn-primary">Book a Consultation</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 Code of Cosmos. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">
+          Contact us: <a href="mailto:info@codeofcosmos.com">info@codeofcosmos.com</a>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.7;">
+          Disclaimer: Astrology is an interpretive practice for guidance and self-reflection. We do not guarantee specific outcomes.
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
